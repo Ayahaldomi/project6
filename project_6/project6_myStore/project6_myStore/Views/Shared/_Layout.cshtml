@@ -1,0 +1,581 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+
+<!-- Mirrored from wphix.com/template/pabna/pabna/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Aug 2024 20:51:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home One || Pabna</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/myContant/img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="~/myContant/css/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="~/myContant/css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="~/myContant/css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="~/myContant/css/meanmenu.min.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="~/myContant/css/owl.carousel.css">
+    <!-- slick css -->
+    <link rel="stylesheet" href="~/myContant/css/slick.css">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="~/myContant/css/font-awesome.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="~/myContant/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="~/myContant/css/responsive.css">
+    <!-- modernizr js -->
+    <script src="~/myContant/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <style>
+        .my-carts ul {
+            text-align: center;
+        }
+
+            .my-carts ul li {
+                display: inline-block;
+                margin: 0 17px;
+                position: relative;
+            }
+
+                .my-carts ul li a {
+                    color: #fff;
+                    display: block;
+                    font-family: "Raleway",sans-serif;
+                    font-size: 13px;
+                    font-weight: 700;
+                    padding: 35px 0;
+                    text-transform: uppercase;
+                }
+
+                .my-carts ul li:hover a {
+                    color: #fe4847
+                }
+
+                .my-carts ul li ul {
+                    background: #fff none repeat scroll 0 0;
+                    box-shadow: 0 1px 2px rgba(86, 86, 90, 0.5);
+                    left: 0;
+                    opacity: 0;
+                    position: absolute;
+                    top: 130%;
+                    transition: all 0.3s ease 0s;
+                    visibility: hidden;
+                    width: 250px;
+                    z-index: 999999;
+                }
+        .my-carts {
+            float: right;
+            margin-left: 17px;
+            position: relative
+        }
+
+            .my-carts .total-cart a {
+                border: 1px solid #fff;
+                border-radius: 100%;
+                color: #fff;
+                display: block;
+                font-size: 16px;
+                height: 30px;
+                line-height: 27px;
+                position: relative;
+                text-align: center;
+                width: 30px;
+            }
+
+                .my-carts .total-cart a span {
+                    background: #fff none repeat scroll 0 0;
+                    border-radius: 50%;
+                    color: #000;
+                    font-size: 13px;
+                    height: 16px;
+                    left: 10px;
+                    line-height: 16px;
+                    position: absolute;
+                    text-align: center;
+                    top: -13px;
+                    width: 16px;
+                }
+
+        .total-cart {
+            padding-bottom: 20px;
+        }
+
+        .my-carts ul {
+            background: #fff none repeat scroll 0 0;
+            padding: 25px 15px;
+            position: absolute;
+            right: 0;
+            top: 120%;
+            transform-origin: center top 0;
+            transition: all 0.5s ease 0s;
+            width: 276px;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .my-carts:hover ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible
+        }
+
+        .my-carts ul li {
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+            .my-carts ul li:last-child {
+                margin-bottom: 0
+            }
+
+        .cart-img {
+            float: left;
+            position: relative;
+            width: 50px;
+        }
+
+
+        .breadcrumb-area {
+            background: rgba(0, 0, 0, 0) url('../../myContant/img/header (2).jpg') !important;
+            padding: 215px 0 135px;
+            position: relative
+        }
+
+            .breadcrumb-area::before {
+                background: #000 none repeat scroll 0 0;
+                content: "";
+                height: 100%;
+                opacity: 0.4;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- header start -->
+    <header class="header-pos">
+        <!-- header-bottom-area start -->
+        <div class="header-bottom-area">
+            <div class="container">
+                <div class="inner-container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-5">
+                            <div class="logo">
+                                <a href="index.html"><img src="~/myContant/img/logo-white-text.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 hidden-xs hidden-sm">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Home")">Home</a>
+
+                                        </li>
+                                        <li><a href="@Url.Action("About", "Home")">about</a></li>
+
+                                        <li>
+                                            <a href="@Url.Action("shopAll", "store")">Shop</a>
+                                            <ul>
+                                                <li><a href="@Url.Action("shop", "store", new { id = 1 })">TOPS</a></li>
+                                                <li><a href="@Url.Action("shop", "store", new { id = 2 })">BOTTOMS</a></li>
+                                                <li><a href="@Url.Action("shop", "store", new { id = 3 })">DRESSES</a></li>
+                                                <li><a href="@Url.Action("shop", "store", new { id = 4 })">KNITS</a></li>
+                                                <li><a href="@Url.Action("shop", "store", new { id = 5 })">ACCESSORY</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="@Url.Action("Contact", "Home")">contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        @if (Session["logged_user"] == null)
+                        {
+
+
+                            <div class="col-md-2 col-sm-8 col-xs-7 header-right">
+                                <div class="my-cart">
+
+
+                                </div>
+                                <div class="user-meta">
+                                    <a href="@Url.Action("login_signup", "store")">Login / Signup</a>
+
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+
+                            var cartItems = Session["cartItems1"] as IEnumerable<project6_myStore.Models.cart_item>;
+
+
+                            <div class="col-md-2 col-sm-8 col-xs-7 header-right">
+                <div class="my-cart">
+                    <div class="total-cart">
+                        <a href="@Url.Action("cart", "store")">
+                            <i class="fa fa-shopping-cart"></i>
+                            
+                        </a>
+                    </div>
+                    <ul>
+                        @if (cartItems != null)
+                        {
+                            foreach (var item in cartItems)
+                            {
+                                <li>
+                                    <div class="cart-img">
+                                        <a href=""><img alt="" src="~/myContant/img/product/@item.product.img_1"></a>
+                                    </div>
+                                    <div class="cart-info">
+                                        <h4><a href="#">@item.product.name</a></h4>
+                                        <span>@item.product.price <span>x @item.quantity</span></span>
+                                    </div>
+                                    <div class="del-icon">
+                                        <i class="fa fa-times-circle"></i>
+                                    </div>
+                                </li>
+
+                            }
+                        }
+
+                        <li>
+                            <a class="cart-button" href="@Url.Action("cart", "store")">view cart</a>
+                            <a class="checkout" href="@Url.Action("CheckOut", "store")">checkout</a>
+                        </li>
+                    </ul>
+                </div>
+                        
+
+                <div class="user-meta">
+                    <a href="#"><i class="fa fa-cog"></i></a>
+                    <ul>
+                        @{if (Session["logged_user"] != null)
+                            {
+                                var user = Session["logged_user"] as project6_myStore.Models.user;
+                        <li><a href="@Url.Action("Edit", "store", new { id = user.id })">My Account</a></li>
+                        <li><a href="@Url.Action("CheckOut", "store")">Checkout</a></li>
+                                }
+                            }
+                    </ul>
+                </div>
+                <div class="header-search">
+                    <i class="fa fa-search"></i>
+                    <div class="header-form">
+                        <form action="#">
+                            <input type="text" placeholder="search" />
+                            <button><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header-bottom-area end -->
+        <!-- mobile-menu-area start -->
+        <div class="mobile-menu-area visible-xs visible-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                        <ul>
+                                            <li><a href="index.html">Homepage Version 1</a></li>
+                                            <li><a href="index-2.html">Homepage Version 2</a></li>
+                                            <li><a href="index-3.html">Homepage Version 3</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="blog.html">blog</a></li>
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">WOMEN CLOTH</a>
+                                                <ul>
+                                                    <li><a href="shop.html">casual shirt</a></li>
+                                                    <li><a href="shop.html">rikke t-shirt</a></li>
+                                                    <li><a href="shop.html">mia top </a></li>
+                                                    <li><a href="shop.html">muscle tee</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">MEN CLOTH</a>
+                                                <ul>
+                                                    <li><a href="shop.html">casual shirt</a></li>
+                                                    <li><a href="shop.html">rikke t-shirt</a></li>
+                                                    <li><a href="shop.html">mia top </a></li>
+                                                    <li><a href="shop.html">muscle tee</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">WOMEN JEWELRY</a>
+                                                <ul>
+                                                    <li><a href="shop.html">necklace </a></li>
+                                                    <li><a href="shop.html">chunky short striped</a></li>
+                                                    <li><a href="shop.html">samhar cuff </a></li>
+                                                    <li><a href="shop.html">nail set</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop.html">Footwear </a></li>
+                                    <li>
+                                        <a href="#">Pages</a>
+                                        <ul>
+                                            <li><a href="about.html">about</a></li>
+                                            <li><a href="blog.html">blog</a></li>
+                                            <li><a href="blog-2-column.html">blog 2 column</a></li>
+                                            <li><a href="blog-full-width.html">blog full width</a></li>
+                                            <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
+                                            <li><a href="single-blog.html">single blog</a></li>
+                                            <li><a href="single-blog-video.html">single blog video</a></li>
+                                            <li><a href="cart.html">shopping cart</a></li>
+                                            <li><a href="checkout.html">checkout</a></li>
+                                            <li><a href="wishlist.html">wishlist</a></li>
+                                            <li><a href="contact.html">contact</a></li>
+                                            <li><a href="login.html">login</a></li>
+                                            <li><a href="shop.html">shop</a></li>
+                                            <li><a href="product-details.html">product details</a></li>
+                                            <li><a href="shop-full-width.html">shop full width</a></li>
+                                            <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
+                                            <li><a href="404.html">404 error</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile-menu-area end -->
+    </header>
+
+    <div >
+        @RenderBody()
+    </div>
+
+
+    <!-- footer start -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-logo">
+                            <img src="img/logo-white-text.png" alt="" />
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore <br /> magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
+                            <div class="widget-icon">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-vimeo-square"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-top-area start -->
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row">
+                    <!-- footer-widget start -->
+                    <div class="col-lg-3 col-md-3 col-sm-4">
+                        <div class="footer-widget">
+                            <h3>CONTACT US</h3>
+                            <ul class="footer-contact">
+                                <li>
+                                    <i class="fa fa-map-marker"> </i>
+                                    Addresss: City of London, Guildhall, PO Box 270
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope"> </i>
+                                    Email: <a href="https://wphix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8c9ccc5c1c6e8eac9dbc1cbfcc0cdc5cd86cbc7c5">[email&#160;protected]</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"> </i>
+                                    Phone: +123 455657589
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- footer-widget end -->
+                    <!-- footer-widget start -->
+                    <div class="col-lg-3 col-md-3 hidden-sm">
+                        <div class="footer-widget">
+                            <h3>My account</h3>
+                            <ul class="footer-menu">
+                                <li><a href="#">Order Status</a></li>
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Sign-up</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">Payment Options</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- footer-widget end -->
+                    <!-- footer-widget start -->
+                    <div class="col-lg-3 col-md-3 col-sm-4">
+                        <div class="footer-widget">
+                            <h3>about us</h3>
+                            <ul class="footer-menu">
+                                <li><a href="#">Delivery</a></li>
+                                <li><a href="#">Payment</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- footer-widget end -->
+                    <!-- footer-widget start -->
+                    <div class="col-lg-3 col-md-3 col-sm-4">
+                        <div class="footer-widget">
+                            <h3>Product tags</h3>
+                            <div class="product-tag">
+                                <ul>
+                                    <li><a href="#">Top</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Collection</a></li>
+                                    <li><a href="#">Women</a></li>
+                                    <li><a href="#">men</a></li>
+                                    <li><a href="#">gallery</a></li>
+                                    <li><a href="#">new</a></li>
+                                    <li><a href="#">Collection men</a></li>
+                                    <li><a href="#">Top</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Collection</a></li>
+                                    <li><a href="#">best</a></li>
+                                    <li><a href="shop.html">cloth</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer-widget end -->
+                </div>
+            </div>
+        </div>
+        <!-- footer-top-area end -->
+        <!-- footer-bottom-area start -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="copyright">
+                            <p>Copyright © <a href="#">BasicTheme</a>. All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="payment-img">
+                            <img src="img/payment.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom-area end -->
+    </footer>
+    <!-- footer end -->
+    <!-- QUICKVIEW PRODUCT -->
+    <div id="quickview-wrapper">
+        <!-- Modal -->
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-product">
+                            <div class="product-images">
+                                <div class="main-image images">
+                                    <img alt="" src="img/product/13.jpg">
+                                </div>
+                            </div><!-- .product-images -->
+
+                            <div class="product-info">
+                                <h1>Diam quis cursus</h1>
+                                <div class="price-box">
+                                    <p class="price"><span class="special-price"><span class="amount">$132.00</span></span></p>
+                                </div>
+                                <a href="shop.html" class="see-all">See all features</a>
+                                <div class="quick-add-to-cart">
+                                    <form method="post" class="cart">
+                                        <div class="numbers-row">
+                                            <input type="number" id="french-hens" value="3">
+                                        </div>
+                                        <button class="single_add_to_cart_button" type="submit">Add to cart</button>
+                                    </form>
+                                </div>
+                                <div class="quick-desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.
+                                </div>
+                                <div class="social-sharing">
+                                    <div class="widget widget_socialsharing_widget">
+                                        <h3 class="widget-title-modal">Share this product</h3>
+                                        <ul class="social-icons">
+                                            <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
+                                            <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div><!-- .product-info -->
+                        </div><!-- .modal-product -->
+                    </div><!-- .modal-body -->
+                </div><!-- .modal-content -->
+            </div><!-- .modal-dialog -->
+        </div>
+        <!-- END Modal -->
+    </div>
+    <!-- END QUICKVIEW PRODUCT -->
+    <!-- all js here -->
+    <!-- jquery latest version -->
+    <script data-cfasync="false" src="~/myContant/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/myContant/js/vendor/jquery-1.12.0.min.js"></script>
+     @*bootstrap js*@ 
+    <script src="~/myContant/js/bootstrap.min.js"></script>
+     @*owl.carousel js*@ 
+    <script src="~/myContant/js/owl.carousel.min.js"></script>
+     @*meanmenu js*@ 
+    <script src="~/myContant/js/jquery.meanmenu.js"></script>
+     jquery-ui js 
+    <script src="~/myContant/js/jquery-ui.min.js"></script>
+     @*wow js*@ 
+    <script src="~/myContant/js/wow.min.js"></script>
+     @*plugins js*@ 
+    <script src="~/myContant/js/plugins.js"></script>
+     @*main js*@ 
+    <script src="~/myContant/js/main.js"></script>
+</body>
+
+<!-- Mirrored from wphix.com/template/pabna/pabna/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Aug 2024 20:52:05 GMT -->
+</html>

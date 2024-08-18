@@ -1,0 +1,200 @@
+﻿@model IEnumerable<project6_myStore.Models.product>
+
+<style>
+    .breadcrumb-area {
+        background: rgba(0, 0, 0, 0) url('../../myContant/img/header (2).jpg') !important;
+        padding: 215px 0 135px;
+        position: relative
+    }
+</style>
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-list">
+                    <h1>Shop Full Width</h1>
+                    <ul>
+                        <li><a href="index.html">home</a> <span class="divider">|</span></li>
+                        <li><a href="#">Category</a> <span class="divider">|</span></li>
+                        <li><a href="#">Shop full width</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<!-- shop-area start -->
+<div class="shop-area shop-full">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shop-content">
+                    <!-- Nav tabs -->
+                    <ul class="shop-tab" role="tablist">
+                        <li><span class="sorting-name"> View as:  </span></li>
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <div class="short-by">
+                        <span class="sorting-show"> Shop by:</span>
+                        <select id="categorySelect">
+                            <option value="@Url.Action("shop", "store", new { id = 1 })">TOPS</option>
+                            <option value="@Url.Action("shop", "store", new {id = 2})">BOTTOMS</option>
+                            <option value="@Url.Action("shop", "store", new {id = 3})">DRESSES</option>
+                            <option value="@Url.Action("shop", "store", new {id = 4})">KNITS</option>
+                            <option value="@Url.Action("shop", "store", new {id = 5})">ACCESSORY</option>
+                        </select>
+                    </div>
+                  
+                    
+
+                    <div class="clear"></div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="row">
+                                <!-- single-product start -->
+                                @foreach (var item in Model)
+                                {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="@Url.Action("shop_details", "store", new {id = item.id})">
+                                                <img src="~/myContant/img/product/@item.img_1" alt="" />
+                                                <img class="secondary-img" src="~/myContant/img/product/@item.img_2" alt="" />
+                                            </a>
+                                            <div class="product-action">
+                                                <div class="button-top">
+                                                    @*<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
+                                                    <a href="#"><i class="fa fa-heart"></i></a>*@
+                                                </div>
+                                                <div class="button-cart">
+                                                    <a href="@Url.Action("shop_details", "store", new {id = item.id})"> <button><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3><a href="@Url.Action("shop_details", "store", new {id = item.id})">@item.name</a></h3>
+                                            <div class="price">
+                                                <span>$ @item.price</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                <!-- single-product end -->
+
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="row shop-list">
+                                <!-- single-product start -->
+                                @foreach (var item in Model)
+                                {
+                                <div class="col-md-12">
+                                    <div class="single-product">
+                                        <div class="product-img">
+                                            <a href="@Url.Action("shop_details", "store", new {id = item.id})">
+                                                <img src="~/myContant/img/product/@item.img_1" alt="" />
+                                                <img class="secondary-img" src="~/myContant/img/product/@item.img_2" alt="" />
+                                            </a>
+                                            @*<span class="tag-line">new</span>*@
+                                        </div>
+                                        <div class="product-content">
+                                            <h3><a href="@Url.Action("shop_details", "store", new {id = item.id})">@item.name</a></h3>
+                                            <div class="price">
+                                                <span>@item.price</span>
+                                                
+                                            </div>
+                                            <p>@item.description</p>
+                                            <div class="product-action">
+                                                <div class="button-top">
+                                                    <a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
+                                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                                </div>
+                                                <div class="button-cart">
+                                                    <button><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product end -->
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shop-area end -->
+<!-- brand-area start -->
+<div class="brand-area">
+    <div class="container">
+        <div class="brand-inner-container pad-60">
+            <div class="row">
+                <div class="brand-curosel">
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-brand">
+                            <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand-area end -->
+<script>
+document.getElementById('categorySelect').addEventListener('change', function() {
+        var url = this.value;
+        if (url) { // Make sure the option has a value
+            window.location.href = url;
+        }
+    });</script>

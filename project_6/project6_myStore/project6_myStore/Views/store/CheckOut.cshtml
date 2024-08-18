@@ -1,0 +1,361 @@
+﻿@model IEnumerable<project6_myStore.Models.cart_item>
+@{
+    var user = Session["logged_user"] as project6_myStore.Models.user;
+}
+<style>
+    .your-order-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+        .your-order-table thead, .your-order-table tfoot {
+            width: 100%;
+            table-layout: fixed; /* Ensures the header and footer are aligned with the body */
+        }
+
+        .your-order-table tbody {
+            display: block;
+            max-height: 300px; /* Set the height you want for the scrollable area */
+            overflow-y: auto;
+            width: 100%;
+            table-layout: fixed; /* Ensures the tbody columns align with the thead */
+        }
+
+            .your-order-table thead, .your-order-table tbody tr, .your-order-table tfoot {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+        .your-order-table th, .your-order-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .your-order-table tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+    .numb {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #e5e5e5;
+        border-radius: 0;
+        height: 42px;
+        padding: 0 0 0 10px;
+        width: 100%;
+    }
+</style>
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-list">
+                    <h1>Checkout</h1>
+                    <ul>
+                        <li><a href="index.html">home</a> <span class="divider">|</span></li>
+                        <li><a href="cart.html">Shopping cart</a> <span class="divider">|</span></li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<br />
+<br />
+<br />
+<!-- checkout-area start -->
+@using (Html.BeginForm())
+{
+    <div class="checkout-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="checkbox-form">
+                        <h3>Billing Details</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>First Name <span class="required">*</span></label>
+                                    <input type="text" value="@user.firstName" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Last Name <span class="required">*</span></label>
+                                    <input type="text" value="@user.lastName" required />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Address <span class="required">*</span></label>
+                                    <input type="text" required value="@user.address" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Town / City <span class="required">*</span></label>
+                                    <input type="text" placeholder="Town / City" required />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Email Address <span class="required">*</span></label>
+                                    <input type="email" placeholder="" value="@user.email" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Phone  <span class="required">*</span></label>
+                                    <input class="numb" type="number" placeholder="+962 - 7" required />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="your-order">
+                        <h3>Your order</h3>
+                        <div class="your-order-table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                @item.product.name <strong class="product-quantity"> × @item.quantity</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount">$@(@item.product.price * @item.quantity)</span>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    @{
+
+                                        decimal Subtotal = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            Subtotal += item.product.price * Convert.ToDecimal(item.quantity);
+                                        }
+                                        <tr class="cart-subtotal">
+                                            <th>Cart Subtotal</th>
+                                            <td><span class="amount">$@Subtotal</span></td>
+                                        </tr>
+                                        <tr class="shipping">
+                                            <th>Shipping</th>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        <input type="radio" value="7" name="shipping" checked />
+                                                        <label>
+                                                            Flat Rate: <span class="amount">$7.00</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="0" name="shipping" />
+                                                        <label>Free Shipping&nbsp;&nbsp;</label>
+                                                    </li>
+                                                    <li></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Order Total</th>
+                                            <td>
+                                                <strong><span class="amount"><span id="selectedShippingValue">$@Subtotal</span></span></strong>
+                                                <input name="amount" hidden value="@Subtotal" />
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tfoot>
+
+                            </table>
+                        </div>
+                        <div class="payment-method">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title" style="display: flex; align-items: center;">
+                                            <input type="radio" value="cash" name="payment" style="margin-right: 10px;" />
+                                            <a role="button" data-toggle="collapsed" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Cash On Delivery
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title" style="display: flex; align-items: center;">
+                                            <input type="radio" value="visa" name="payment" style="margin-right: 10px;" />
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Visa Payment
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title" style="display: flex; align-items: center;">
+                                            <input type="radio" value="paypal" name="payment" style="margin-right: 10px;" />
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+                                                PayPal
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <p>Pay via PayPal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-button-payment">
+                                <input type="submit" value="Place order" onclick="return validatePaymentMethod()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- checkout-area end -->
+    <!-- brand-area start -->
+    <div class="brand-area">
+        <div class="container">
+            <div class="brand-inner-container pad-60">
+                <div class="row">
+                    <div class="brand-curosel">
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand-area end -->
+
+    <script>
+        // Assuming Subtotal is coming from your backend model
+        var subtotal = @Subtotal;
+
+        function updateTotal() {
+            // Get the selected shipping value
+            var selectedShipping = parseFloat(document.querySelector('input[name="shipping"]:checked').value);
+
+            // Calculate the total
+            var total = subtotal + selectedShipping;
+
+
+            // Display the total
+            document.getElementById('selectedShippingValue').innerText = "$" + total.toFixed(2);
+        }
+
+        // Attach the event listener to the radio buttons to call updateTotal when a change occurs
+        document.addEventListener('DOMContentLoaded', function () {
+            var radios = document.getElementsByName('shipping');
+            for (var i = 0; i < radios.length; i++) {
+                radios[i].addEventListener('change', updateTotal);
+            }
+
+            // Call the function once to initialize the total value with the default selection
+            updateTotal();
+        });
+    </script>
+    <script>
+        function validatePaymentMethod() {
+            // Check if any payment method is selected
+            var selectedPayment = document.querySelector('input[name="payment"]:checked');
+            var shipping = document.querySelector('input[name="shipping"]:checked');
+            console.log(selectedPayment);
+            console.log(shipping);
+
+            if (!selectedPayment || !shipping) {
+                alert('Please select a payment method and shipping before placing your order.');
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
+}

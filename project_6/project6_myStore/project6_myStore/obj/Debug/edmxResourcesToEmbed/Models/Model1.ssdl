@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="cart_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="size" Type="nvarchar(max)" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="cart_id" Type="int" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="order_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="size" Type="nvarchar(max)" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="order_id" Type="int" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="transaction_id" Type="int" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="img_1" Type="nvarchar(max)" />
+    <Property Name="img_2" Type="nvarchar(max)" />
+    <Property Name="img_3" Type="nvarchar(max)" />
+    <Property Name="img_4" Type="nvarchar(max)" />
+    <Property Name="quantity_inStock" Type="int" />
+    <Property Name="category_id" Type="int" />
+  </EntityType>
+  <EntityType Name="transactions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="status" Type="nvarchar(max)" />
+    <Property Name="paypal_transaction_id" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" />
+    <Property Name="lastName" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="password" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar(max)" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="type" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__cart__user_id__3E52440B">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cart_item__cart___4222D4EF">
+    <End Role="cart" Type="Self.cart" Multiplicity="0..1" />
+    <End Role="cart_item" Type="Self.cart_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cart">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_item">
+        <PropertyRef Name="cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cart_item__produ__412EB0B6">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="cart_item" Type="Self.cart_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_item">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_ite__order__4F7CD00D">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="order_item" Type="Self.order_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_item">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_ite__produ__4E88ABD4">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="order_item" Type="Self.order_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_item">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__transact__47DBAE45">
+    <End Role="transactions" Type="Self.transactions" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transactions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="transaction_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__user_id__46E78A0C">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__categor__3B75D760">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="myStoreModelStoreContainer">
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart_item" EntityType="Self.cart_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_item" EntityType="Self.order_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transactions" EntityType="Self.transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__cart__user_id__3E52440B" Association="Self.FK__cart__user_id__3E52440B">
+      <End Role="users" EntitySet="users" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cart_item__cart___4222D4EF" Association="Self.FK__cart_item__cart___4222D4EF">
+      <End Role="cart" EntitySet="cart" />
+      <End Role="cart_item" EntitySet="cart_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cart_item__produ__412EB0B6" Association="Self.FK__cart_item__produ__412EB0B6">
+      <End Role="product" EntitySet="product" />
+      <End Role="cart_item" EntitySet="cart_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_ite__order__4F7CD00D" Association="Self.FK__order_ite__order__4F7CD00D">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_item" EntitySet="order_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_ite__produ__4E88ABD4" Association="Self.FK__order_ite__produ__4E88ABD4">
+      <End Role="product" EntitySet="product" />
+      <End Role="order_item" EntitySet="order_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__transact__47DBAE45" Association="Self.FK__orders__transact__47DBAE45">
+      <End Role="transactions" EntitySet="transactions" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__user_id__46E78A0C" Association="Self.FK__orders__user_id__46E78A0C">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__categor__3B75D760" Association="Self.FK__product__categor__3B75D760">
+      <End Role="category" EntitySet="category" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
